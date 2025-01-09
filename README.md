@@ -48,24 +48,27 @@ Zokou est un bot multi-devices conçu pour enrichir vos conversations WhatsApp a
   6. Sélectionnez le **Free Plan** si vous ne voulez pas payer.  
   7. Dans la section **environemment variable**, cliquez sur **Add from .env** et copiez le contenu suivant :
 
-     ```env
-     PREFIXE=.
-     LECTURE_AUTO_STATUS=oui
-     TELECHARGER_AUTO_STATUS=oui
-     NOM_BOT=Zokou-MD
-     LIENS_MENU=https://wallpapercave.com/uwp/uwp3943464.jpeg
-     PM_PERMIT=non
-     MODE_PUBLIC=oui
-     ETAT=1
-     SESSION_ID=zokk
-     NOM_OWNER=Djalega++
-     NUMERO_OWNER=22891733300
-     WARN_COUNT=3
-     STARTING_BOT_MESSAGE=oui
-     ANTI_VUE_UNIQUE=oui
-     PM_CHATBOT=non
-     ANTI_COMMAND_SPAM=non
-     ```
+```env
+PREFIXE=.
+LECTURE_AUTO_STATUS=non
+TELECHARGER_AUTO_STATUS=non
+NOM_BOT=Zokou-MD
+LIENS_MENU=LUFFY
+PM_PERMIT=non
+MODE_PUBLIC=oui
+ETAT=1
+SESSION_ID=zokk
+NOM_OWNER=Djalega++
+NUMERO_OWNER=22891733300
+WARN_COUNT=3
+STARTING_BOT_MESSAGE=oui
+ANTI_VUE_UNIQUE=oui
+PM_CHATBOT=non
+HEROKU=non
+ANTI_COMMAND_SPAM=non
+ANTI_DELETE_MESSAGE=oui
+AUTO_REACT_MESSAGE=non
+```
 
   8. Cliquez sur **Add env** pour enregistrer, puis modifiez selon vos besoins. N'oubliez pas d'entrer votre session ID.  
   9. Cliquez sur **Deploy service** et profitez-en !
@@ -107,6 +110,11 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
+
+    - name: Install ffmpeg
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y ffmpeg
 
     - name: Install dependencies
       run: |
